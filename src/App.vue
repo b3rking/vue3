@@ -8,6 +8,8 @@
     <!-- this is used to print html -->
     <em v-html="secondTitle"></em>
     <!-- v-text -->
+    <h1 v-text="text"></h1>
+    
 </template>
 
 <script>
@@ -17,6 +19,7 @@ export default {
             title: "hii to vue3",
             secondTitle: "<h1>title written with html tag</h1>",
             isVisible: null,
+            text: "v-text can be used as a replacement to interpolation syntax"
         };
     },
 };
