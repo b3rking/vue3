@@ -22,7 +22,9 @@
     </ul>
     <em>showing key and value</em>
     <ul>
-        <li v-for="obj in dcheros2" v-bind:key="obj">{{ obj }} - {{ obj.name }}</li>
+        <li v-for="obj in dcheros2" v-bind:key="obj">
+            {{ obj }} - {{ obj.name }}
+        </li>
     </ul>
     <ul>
         <li v-for="val in dcheros2" v-bind:key="val">
@@ -31,6 +33,16 @@
             </ol>
         </li>
     </ul>
+    <hr />
+    <h1>v-bind</h1>
+    <small>you can remove v-bind and use : </small>
+    <input v-bind:value="newHero" />
+    <button :disabled="isActive">Add hero</button>
+    <!-- <button v-bind:disabled="isActive">Add hero</button> -->
+    <hr />
+    <h1>v-model</h1>
+    <input v-model.lazy="newHero" />
+    <button>Add hero</button>
 </template>
 
 <script>
@@ -46,12 +58,14 @@ export default {
                 names: ["Supergirl", "Flash", "Arrow", "Batman", "Superman"],
             },
             dcheros2: [
-                {name: "Supergirl"},
-                {name: "Flash"},
-                {name: "Arrow"},
-                {name: "Batman"},
-                {name: "Superman"},
+                { name: "Supergirl" },
+                { name: "Flash" },
+                { name: "Arrow" },
+                { name: "Batman" },
+                { name: "Superman" },
             ],
+            newHero: "aquaman",
+            isActive: true,
         };
     },
 };
