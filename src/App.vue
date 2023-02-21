@@ -62,8 +62,8 @@
     <hr />
     <h1>computed propreties</h1>
     <h2>dc heros {{ herosNumber }}</h2>
-    <ul v-for="h in dcheros2" :key="h">
-        <li>{{ h.name }}</li>
+    <ul v-for="(h, index) in dcheros2" :key="index">
+        <div>{{ h.name }} <button @click="removeHero(index)">x</button></div>
     </ul>
     <form @submit.prevent="addHero">
         <input v-model="newHero" placeholder="type your name here" />
@@ -80,12 +80,15 @@ export default {
                 this.newHero = "";
             }
         },
+        removeHero(index) {
+            this.dcheros2 = this.dcheros2.filter((hero, i) => i != index)
+        },
     },
 
     computed: {
         herosNumber() {
-            return this.dcheros2.length
-        }
+            return this.dcheros2.length;
+        },
     },
 
     data() {
