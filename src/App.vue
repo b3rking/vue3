@@ -43,6 +43,13 @@
     <h1>v-model</h1>
     <input v-model.lazy="newHero" />
     <button>Add hero</button>
+    <hr />
+    <h1>v-on</h1>
+    <form @submit.prevent="newHero = 'b3rkg'">
+        <input v-model="newHero" />
+        <button type="submit">Add hero</button>
+    </form>
+    <p>can be replaced by @ => v-on:click = @click</p>
 </template>
 
 <script>
