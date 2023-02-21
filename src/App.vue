@@ -33,25 +33,25 @@
             </ol>
         </li>
     </ul> -->
-    <hr />
-    <h1>v-bind</h1>
+    <!-- <hr />
+    <h1>v-bind</h1> -->
     <!-- <small>you can remove v-bind and use : </small>
     <input v-bind:value="newHero" />
     <button :disabled="isActive">Add hero</button> -->
     <!-- <button v-bind:disabled="isActive">Add hero</button> -->
-    <hr />
-    <h1>v-model</h1>
+    <!-- <hr />
+    <h1>v-model</h1> -->
     <!-- <input v-model.lazy="newHero" />
     <button>Add hero</button> -->
-    <hr />
-    <h1>v-on</h1>
+    <!-- <hr />
+    <h1>v-on</h1> -->
     <!-- <form @submit.prevent="newHero = 'b3rkg'">
         <input v-model="newHero" />
         <button type="submit">Add hero</button>
     </form>
     <p>can be replaced by @ => v-on:click = @click</p> -->
-    <hr />
-    <h1>methods</h1>
+    <!-- <hr />
+    <h1>methods</h1> -->
     <!-- <ul v-for="h in dcheros2" :key="h">
         <li>{{ h.name }}</li>
     </ul>
@@ -59,16 +59,23 @@
         <input v-model="newHero" placeholder="type your name here" />
         <button type="submit">Add hero</button>
     </form> -->
-    <hr />
-    <h1>computed propreties</h1>
-    <h2>dc heros {{ herosNumber }}</h2>
-    <ul v-for="(h, index) in dcheros2" :key="index">
-        <div>{{ h.name }} <button @click="removeHero(index)">x</button></div>
-    </ul>
-    <form @submit.prevent="addHero">
-        <input v-model="newHero" placeholder="type your name here" />
-        <button type="submit">Add hero</button>
-    </form>
+    <!-- <hr />
+    <h1>computed propreties</h1> -->
+
+    <h2 class="text-center text-2xl font-bold capitalize my-4">
+        dc heros {{ herosNumber }}
+    </h2>
+    <div class="flex flex-col-reverse w-1/3 mx-auto items-center">
+        <ul v-for="(h, index) in dcheros2" :key="index">
+            <div class="my-2">
+                {{ h.name }} <button @click="removeHero(index)" class="bg-gray-500 text-white rounded-sm py-1 px-3 uppercase">x</button>
+            </div>
+        </ul>
+        <form @submit.prevent="addHero" class="mb-6">
+            <input v-model="newHero" placeholder="type your name here" class="border-2 border-gray-500 rounded-md py-1 px-3 text-lg"/>
+            <button type="submit" class="rounded-md py-2 px-3 ml-1 bg-gray-500 text-white">Add hero</button>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -81,7 +88,7 @@ export default {
             }
         },
         removeHero(index) {
-            this.dcheros2 = this.dcheros2.filter((hero, i) => i != index)
+            this.dcheros2 = this.dcheros2.filter((hero, i) => i != index);
         },
     },
 
