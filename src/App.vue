@@ -52,6 +52,16 @@
     <p>can be replaced by @ => v-on:click = @click</p> -->
     <hr />
     <h1>methods</h1>
+    <!-- <ul v-for="h in dcheros2" :key="h">
+        <li>{{ h.name }}</li>
+    </ul>
+    <form @submit.prevent="addHero">
+        <input v-model="newHero" placeholder="type your name here" />
+        <button type="submit">Add hero</button>
+    </form> -->
+    <hr />
+    <h1>computed propreties</h1>
+    <h2>dc heros {{ herosNumber }}</h2>
     <ul v-for="h in dcheros2" :key="h">
         <li>{{ h.name }}</li>
     </ul>
@@ -70,6 +80,12 @@ export default {
                 this.newHero = "";
             }
         },
+    },
+
+    computed: {
+        herosNumber() {
+            return this.dcheros2.length
+        }
     },
 
     data() {
