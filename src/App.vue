@@ -1,22 +1,22 @@
 <template>
     <!-- this is used to print out simple text -->
-    <h1 v-if="isVisible">{{ title }}</h1>
+    <!-- <h1 v-if="isVisible">{{ title }}</h1> -->
     <!-- v-else-if -->
-    <h1 v-else-if="isVisible === null">v-else-if {{ title }}</h1>
+    <!-- <h1 v-else-if="isVisible === null">v-else-if {{ title }}</h1> -->
     <!-- using v-else -->
-    <h1 v-else>if not visible try : {{ title }}</h1>
+    <!-- <h1 v-else>if not visible try : {{ title }}</h1> -->
     <!-- this is used to print html -->
-    <em v-html="secondTitle"></em>
+    <!-- <em v-html="secondTitle"></em> -->
     <!-- v-text -->
-    <h1 v-text="text"></h1>
+    <!-- <h1 v-text="text"></h1> -->
     <!-- v-for -->
-    <hr />
+    <!-- <hr />
     <h1>Dc heros</h1>
     <em>for arrays</em>
     <ul>
         <li v-for="hero in heros" v-bind:key="hero">{{ hero }}</li>
-    </ul>
-    <em>for object</em>
+    </ul> -->
+    <!-- <em>for object</em>
     <ul>
         <li v-for="h in dcheros.names" v-bind:key="h">{{ h }}</li>
     </ul>
@@ -32,28 +32,46 @@
                 <li>{{ key }}</li>
             </ol>
         </li>
-    </ul>
+    </ul> -->
     <hr />
     <h1>v-bind</h1>
-    <small>you can remove v-bind and use : </small>
+    <!-- <small>you can remove v-bind and use : </small>
     <input v-bind:value="newHero" />
-    <button :disabled="isActive">Add hero</button>
+    <button :disabled="isActive">Add hero</button> -->
     <!-- <button v-bind:disabled="isActive">Add hero</button> -->
     <hr />
     <h1>v-model</h1>
-    <input v-model.lazy="newHero" />
-    <button>Add hero</button>
+    <!-- <input v-model.lazy="newHero" />
+    <button>Add hero</button> -->
     <hr />
     <h1>v-on</h1>
-    <form @submit.prevent="newHero = 'b3rkg'">
+    <!-- <form @submit.prevent="newHero = 'b3rkg'">
         <input v-model="newHero" />
         <button type="submit">Add hero</button>
     </form>
-    <p>can be replaced by @ => v-on:click = @click</p>
+    <p>can be replaced by @ => v-on:click = @click</p> -->
+    <hr />
+    <h1>methods</h1>
+    <ul v-for="h in dcheros2" :key="h">
+        <li>{{ h.name }}</li>
+    </ul>
+    <form @submit.prevent="addHero">
+        <input v-model="newHero" placeholder="type your name here" />
+        <button type="submit">Add hero</button>
+    </form>
 </template>
 
 <script>
 export default {
+    methods: {
+        addHero() {
+            if (this.newHero !== "") {
+                this.dcheros2.push({ name: this.newHero });
+                this.newHero = "";
+            }
+        },
+    },
+
     data() {
         return {
             title: "hii to vue3",
@@ -71,7 +89,7 @@ export default {
                 { name: "Batman" },
                 { name: "Superman" },
             ],
-            newHero: "aquaman",
+            newHero: "",
             isActive: true,
         };
     },
