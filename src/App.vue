@@ -62,12 +62,14 @@
     <!-- <hr />
     <h1>computed propreties</h1> -->
     <AppHeader />
-    <DcHeros />
+    <!-- <DcHeros /> -->
+    <CalendarApp />
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader";
-import DcHeros from "./components/DcHeros";
+import CalendarApp from "./components/CalendarApp";
+// import DcHeros from "./components/DcHeros";
 
 export default {
     methods: {
@@ -90,7 +92,8 @@ export default {
 
     components: {
         AppHeader,
-        DcHeros,
+        CalendarApp,
+        // DcHeros,
     },
 
     data() {
