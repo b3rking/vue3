@@ -31,6 +31,10 @@
                 {{ num }}
             </p>
         </section>
+        <section class="my-3 flex flex-row justify-between px-6">
+            <button class="bg-black text-white py-1 border font-semibold px-3 rounded-md hover:bg-white hover:border hover:border-black hover:text-black">Prev</button>
+            <button class="bg-black text-white py-1 px-3 rounded-md">Next</button>
+        </section>
     </div>
 </template>
 
