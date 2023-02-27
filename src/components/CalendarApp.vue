@@ -59,10 +59,20 @@ export default {
             return new Date(this.currentYear, this.month - 1, 1).getDay();
         },
         next() {
-            this.month++;
+            if (this.currentMonth === 11) {
+                this.month = 1
+                this.currentYear ++
+            } else {
+                this.month++;
+            }
         },
         prev() {
-            this.month--;
+            if (this.currentMonth === 0) {
+                this.month = 11
+                this.currentYear --
+            } else {
+                this.month--;
+            }
         },
     },
 
