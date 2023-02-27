@@ -32,8 +32,18 @@
             </p>
         </section>
         <section class="my-3 flex flex-row justify-between px-6">
-            <button class="bg-black text-white py-1 border font-semibold px-3 rounded-md hover:bg-white hover:border hover:border-black hover:text-black">Prev</button>
-            <button class="bg-black text-white py-1 px-3 rounded-md">Next</button>
+            <button
+                class="bg-black text-white py-1 border font-semibold px-3 rounded-md hover:bg-white hover:border hover:border-black hover:text-black"
+                @click="prev"
+            >
+                Prev
+            </button>
+            <button
+                class="bg-black text-white py-1 border font-semibold px-3 rounded-md hover:bg-white hover:border hover:border-black hover:text-black"
+                @click="next"
+            >
+                Next
+            </button>
         </section>
     </div>
 </template>
@@ -48,12 +58,27 @@ export default {
         startDay() {
             return new Date(this.currentYear, this.month - 1, 1).getDay();
         },
+        next() {
+            this.month++;
+        },
+        prev() {
+            this.month--;
+        },
     },
+
+    computed: {
+        currentMonth() {
+            return new Date(this.currentYear, this.month).toLocaleString(
+                "default",
+                {
+                    month: "long",
+                }
+            );
+        },
+    },
+
     data() {
         return {
-            currentMonth: new Date().toLocaleString("default", {
-                month: "long",
-            }),
             month: new Date().getMonth() + 1,
             currentYear: new Date().getFullYear(),
             days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
