@@ -3,6 +3,7 @@
         <router-link class="mx-2" to="/">Home</router-link>
         <router-link class="mx-2" to="dc-heros">Dc heros</router-link>
         <router-link class="mx-2" to="calendar">Calendar</router-link>
+        <router-link class="mx-2" to="calculatrice">calculatrice</router-link>
     </nav>
 </template>
 

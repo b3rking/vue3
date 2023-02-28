@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
-import DcHeros from "./components/DcHeros";
-import CalendarApp from "./components/CalendarApp";
-import HomeApp from "./components/HomeApp";
+import DcHeros from "./pages/DcHeros";
+import CalendarApp from "./pages/CalendarApp";
+import HomeApp from "./pages/HomeApp";
+import CalculatriceApp from "./components/calculatrice/CalculatriceApp";
 
 const routes = [
     { path: "/", component: HomeApp },
     { path: "/dc-heros", component: DcHeros },
     { path: "/calendar", component: CalendarApp },
+    { path: "/calculatrice", component: CalculatriceApp },
 ];
 
 const router = createRouter({
