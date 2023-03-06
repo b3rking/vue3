@@ -1,15 +1,22 @@
 <template>
     <div class="flex flex-wrap w-full">
-        <div
-            class="absolute w-full"
-            v-for="(slider, index) in sliders"
-            :key="slider"
-        >
+        <div class="w-full" v-for="(slider, index) in sliders" :key="slider">
             <div
                 v-if="currentSlide == index"
                 style="height: 350px"
                 :class="slider"
             ></div>
+        </div>
+        <div class="my-10">
+            <Transition name="fade">
+                <h1 class="text-center" v-if="isTitleShowing">Slider</h1>
+            </Transition>
+            <button
+                class="p-2 rounded-md bg-gray-500 text-white ml-2"
+                @click="isTitleShowing = !isTitleShowing"
+            >
+                Toggle text
+            </button>
         </div>
     </div>
 </template>
@@ -25,6 +32,7 @@ export default {
                 "bg-yellow-600",
                 "bg-green-600",
             ],
+            isTitleShowing: false,
         };
     },
     mounted() {
@@ -39,4 +47,14 @@ export default {
     },
 };
 </script>
-<style></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
