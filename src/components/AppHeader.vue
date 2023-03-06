@@ -17,6 +17,7 @@ export default {
                 { title: "Calendar", to: "calendar" },
                 { title: "calculatrice", to: "calculatrice" },
                 { title: "Markdown", to: "Markdown" },
+                { title: "Slider", to: "slider" },
             ],
         };
     },
