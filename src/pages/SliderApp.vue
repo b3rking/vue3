@@ -1,16 +1,18 @@
 <template>
     <div class="flex flex-wrap w-full">
         <div class="w-full" v-for="(slider, index) in sliders" :key="slider">
-            <div
-                v-if="currentSlide == index"
-                style="height: 350px"
-                :class="slider"
-            ></div>
+            <transition name="fade">
+                <div
+                    v-if="currentSlide == index"
+                    style="height: 350px"
+                    :class="slider"
+                ></div>
+            </transition>
         </div>
         <div class="my-10">
-            <Transition name="fade">
+            <transition name="fade">
                 <h1 class="text-center" v-if="isTitleShowing">Slider</h1>
-            </Transition>
+            </transition>
             <button
                 class="p-2 rounded-md bg-gray-500 text-white ml-2"
                 @click="isTitleShowing = !isTitleShowing"
