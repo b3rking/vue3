@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-wrap w-full">
-        <div class="w-full" v-for="(slider, index) in sliders" :key="slider">
+    <div class="flex flex-wrap w-full relative">
+        <div class="absolute w-full" v-for="(slider, index) in sliders" :key="slider">
             <transition name="fade">
                 <div
                     v-if="currentSlide == index"
@@ -9,7 +9,7 @@
                 ></div>
             </transition>
         </div>
-        <div class="my-10">
+        <div class="absolute my-10 top-96">
             <transition name="fade">
                 <h1 class="text-center" v-if="isTitleShowing">Slider</h1>
             </transition>
@@ -42,7 +42,7 @@ export default {
             this.currentSlide == 3
                 ? (this.currentSlide = 0)
                 : this.currentSlide++;
-        }, 1000);
+        }, 3000);
     },
     beforeUnmount() {
         clearInterval(this.interval);
@@ -52,11 +52,16 @@ export default {
 <style>
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.5s ease;
+    transition: all 3s ease-in;
 }
 
-.fade-enter-from,
+.fade-enter-from {
+    opacity: 1;
+    transform: translateX(-100%);
+}
+
 .fade-leave-to {
     opacity: 0;
+    transform: translateX(100%);
 }
 </style>
