@@ -33,7 +33,8 @@
     </div>
 </template>
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebase from "../utilities/firebase";
+
 export default {
     data() {
         return {
@@ -45,17 +46,14 @@ export default {
     },
     methods: {
         submit() {
-            const auth = getAuth();
-            signInWithEmailAndPassword(auth, this.form.email, this.form.password)
-                .then((userCredential) => {
-                    // Signed in
-                    const user = userCredential.user;
-                    console.log(user);
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(this.form.email, this.form.password)
+                .then((res) => {
+                    console.log(res);
                 })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log("status :"+ errorCode, "message :"+ errorMessage);
+                .catch((e) => {
+                    console.log(e);
                 });
         },
     },
