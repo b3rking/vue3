@@ -3,7 +3,8 @@
         @click="$emit('hide-modal')"
         class="absolute top-0 left-0 h-screen w-screen z-2"
         style="background-color: rgba(0, 0, 0, 0.7)"></div>
-    <div class="absolute bg-white flex w-1/3 top-2 left-56 translate-x-1/2 translate-y-1/2 my-40 rounded-md p-3 ">
+    <div
+        class="absolute bg-white flex w-1/3 top-2 left-56 translate-x-1/2 translate-y-1/2 my-40 rounded-md p-3">
         <div class="text-xl text-center font-semibold w-full">
             <h1 class="text-center capitalize">login</h1>
             <hr class="my-3" />
@@ -32,6 +33,7 @@
     </div>
 </template>
 <script>
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 export default {
     data() {
         return {
@@ -43,7 +45,18 @@ export default {
     },
     methods: {
         submit() {
-            console.log(this.form);
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, this.form.email, this.form.password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log(user);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log("status :"+ errorCode, "message :"+ errorMessage);
+                });
         },
     },
 };
