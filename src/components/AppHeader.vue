@@ -5,6 +5,7 @@
         <router-link class="mx-2" v-for="url in urls" :key="url" :to="url.to">{{
             url.title
         }}</router-link>
+        <button @click="showModal = !showModal">login</button>
     </nav>
 </template>
 

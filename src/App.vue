@@ -1,10 +1,12 @@
 <template>
     <AppHeader />
     <router-view></router-view>
+    <LoginModal />
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader";
+import LoginModal from "./components/LoginModal";
 
 export default {
     methods: {
@@ -26,7 +28,7 @@ export default {
     },
 
     components: {
-        AppHeader,
+        AppHeader, LoginModal
     },
 
     data() {
