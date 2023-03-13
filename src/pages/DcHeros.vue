@@ -8,8 +8,7 @@
                 {{ h.name }}
                 <button
                     @click="removeHero(index)"
-                    class="bg-gray-500 text-white rounded-sm py-1 px-3 uppercase"
-                >
+                    class="bg-gray-500 text-white rounded-sm py-1 px-3 uppercase">
                     x
                 </button>
             </div>
@@ -18,12 +17,10 @@
             <input
                 v-model="newHero"
                 placeholder="type your name here"
-                class="border-2 border-gray-500 rounded-md py-1 px-3 text-lg"
-            />
+                class="border-2 border-gray-500 rounded-md py-1 px-3 text-lg" />
             <button
                 type="submit"
-                class="rounded-md py-2 px-3 ml-1 bg-gray-500 text-white"
-            >
+                class="rounded-md py-2 px-3 ml-1 bg-gray-500 text-white">
                 Add hero
             </button>
         </form>
@@ -31,17 +28,30 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
-    methods: {
-        addHero() {
-            if (this.newHero !== "") {
-                this.dcheros2.push({ name: this.newHero });
-                this.newHero = "";
+    setup() {
+        let newHero = ref("");
+        let dcheros2 = ref([
+            { name: "Supergirl" },
+            { name: "Flash" },
+            { name: "Batman" },
+            { name: "Arrow" },
+            { name: "Superman" },
+        ]);
+
+        function addHero() {
+            if (newHero.value !== "") {
+                dcheros2.value.push({ name: newHero.value });
+                newHero.value = "";
             }
-        },
-        removeHero(index) {
-            this.dcheros2 = this.dcheros2.filter((hero, i) => i != index);
-        },
+        }
+
+        function removeHero(index) {
+            dcheros2.value = dcheros2.value.filter((hero, i) => i != index);
+        }
+        return { dcheros2, newHero, addHero, removeHero };
     },
 
     computed: {
@@ -49,7 +59,7 @@ export default {
             return this.dcheros2.length;
         },
     },
-    
+
     data() {
         return {
             title: "hii to vue3",
@@ -60,14 +70,7 @@ export default {
             dcheros: {
                 names: ["Supergirl", "Flash", "Arrow", "Batman", "Superman"],
             },
-            dcheros2: [
-                { name: "Supergirl" },
-                { name: "Flash" },
-                { name: "Arrow" },
-                { name: "Batman" },
-                { name: "Superman" },
-            ],
-            newHero: "",
+
             isActive: true,
         };
     },
