@@ -16,6 +16,7 @@
         <form @submit.prevent="addHero" class="mb-6">
             <input
                 v-model="newHero"
+                ref="newHeroRef"
                 placeholder="type your name here"
                 class="border-2 border-gray-500 rounded-md py-1 px-3 text-lg" />
             <button
@@ -51,30 +52,16 @@ export default {
         function removeHero(index) {
             dcheros2.value = dcheros2.value.filter((hero, i) => i != index);
         }
+
         return { dcheros2, newHero, addHero, removeHero };
     },
-
-    computed: {
-        herosNumber() {
-            return this.dcheros2.length;
-        },
-    },
-
-    data() {
-        return {
-            title: "hii to vue3",
-            secondTitle: "<h1>title written with html tag</h1>",
-            isVisible: null,
-            text: "v-text can be used as a replacement to interpolation syntax",
-            heros: ["Supergirl", "Flash", "Arrow", "Batman", "Superman"],
-            dcheros: {
-                names: ["Supergirl", "Flash", "Arrow", "Batman", "Superman"],
-            },
-
-            isActive: true,
-        };
-    },
 };
+
+// computed: {
+//     herosNumber() {
+//         return this.dcheros2.length;
+//     },
+// }
 </script>
 
 <style></style>
