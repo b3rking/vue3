@@ -29,11 +29,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 export default {
     setup() {
         let newHero = ref("");
+        const newHeroRef = ref("");
         let dcheros2 = ref([
             { name: "Supergirl" },
             { name: "Flash" },
@@ -41,6 +42,10 @@ export default {
             { name: "Arrow" },
             { name: "Superman" },
         ]);
+
+        onMounted (() => {
+            newHeroRef.value.focus()
+        })
 
         function addHero() {
             if (newHero.value !== "") {

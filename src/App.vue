@@ -2,13 +2,12 @@
     <AppHeader @show-modal="showModal = true" />
     <router-view></router-view>
     <div v-if="showModal">
-        <LoginModal @hide-modal="showModal = false" />
+        <!-- <LoginModal @hide-modal="showModal = false" /> -->
     </div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader";
-import LoginModal from "./components/LoginModal";
 
 export default {
     methods: {
@@ -31,7 +30,6 @@ export default {
 
     components: {
         AppHeader,
-        LoginModal,
     },
 
     data() {
