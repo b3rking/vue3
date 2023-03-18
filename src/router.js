@@ -5,6 +5,7 @@ import HomeApp from "./pages/HomeApp";
 import MarkdownApp from "./pages/MarkdownApp";
 import CalculatriceApp from "./components/calculatrice/CalculatriceApp";
 import Slider from "./pages/SliderApp";
+import CalculatorApp from "./pages/CalculatorApp";
 
 const routes = [
     { path: "/", component: HomeApp },
@@ -13,6 +14,7 @@ const routes = [
     { path: "/calculatrice", component: CalculatriceApp },
     { path: "/markdown", component: MarkdownApp },
     { path: "/slider", component: Slider },
+    { path: "/calculator", component: CalculatorApp },
 ];
 
 const router = createRouter({

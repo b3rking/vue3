@@ -8,7 +8,8 @@
                 {{ h.name }}
                 <button
                     @click="removeHero(index)"
-                    class="bg-gray-500 text-white rounded-sm py-1 px-3 uppercase">
+                    class="bg-gray-500 text-white rounded-sm py-1 px-3 uppercase"
+                >
                     x
                 </button>
             </div>
@@ -18,10 +19,12 @@
                 v-model="newHero"
                 ref="newHeroRef"
                 placeholder="type your name here"
-                class="border-2 border-gray-500 rounded-md py-1 px-3 text-lg" />
+                class="border-2 border-gray-500 rounded-md py-1 px-3 text-lg"
+            />
             <button
                 type="submit"
-                class="rounded-md py-2 px-3 ml-1 bg-gray-500 text-white">
+                class="rounded-md py-2 px-3 ml-1 bg-gray-500 text-white"
+            >
                 Add hero
             </button>
         </form>
@@ -29,12 +32,12 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
 import { onMounted, ref } from "vue";
 
 export default {
     setup() {
         let newHero = ref("");
-        const newHeroRef = ref("");
         let dcheros2 = ref([
             { name: "Supergirl" },
             { name: "Flash" },
@@ -43,9 +46,13 @@ export default {
             { name: "Superman" },
         ]);
 
-        onMounted (() => {
-            newHeroRef.value.focus()
-        })
+        onMounted(() => {
+            console.log("hehe");
+        });
+
+        const herosNumber = computed({
+            get: () => dcheros2.value.length,
+        });
 
         function addHero() {
             if (newHero.value !== "") {
@@ -58,15 +65,9 @@ export default {
             dcheros2.value = dcheros2.value.filter((hero, i) => i != index);
         }
 
-        return { dcheros2, newHero, addHero, removeHero };
+        return { dcheros2, newHero, addHero, removeHero, herosNumber };
     },
 };
-
-// computed: {
-//     herosNumber() {
-//         return this.dcheros2.length;
-//     },
-// }
 </script>
 
 <style></style>
